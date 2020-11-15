@@ -2,10 +2,12 @@ import pygame
 import pygame.locals
 import pygame_gui
 
-from FlagManager import FlagManager
+from FlagManager import FlagPagingManager
 from Window import Window
 from constants import SIZE_FLAG, FLAG_POSITIONS, WORKING_DIR
 from documentationOpener import openDocumentationFile
+from classifier import Classifier
+import os
 
 
 class GuessFlags(object):
@@ -23,13 +25,17 @@ class GuessFlags(object):
         self.fps_clock = pygame.time.Clock()
 
         # Page of pictures
-        self.page = 1
+        self.page = 0
 
         # Flag manager
-        self.flag_manager = FlagManager()
+        self.flag_manager = FlagPagingManager()
 
         # Question number
         self.question_number = 1
+
+        self.clf = Classifier()
+        self.clf.read('data/flag_data.csv', self.get_supported_country_list())
+        self.clf.fit()
 
     def run(self):
         """
@@ -58,21 +64,14 @@ class GuessFlags(object):
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.window.yesButton:
                         print("yes Button pressed!")
-                        self.question_number += 1
-                        self.update_flags(self.question_number)
-                        self.window.draw()
-                        self.draw_flags()
+                        self.answer(True)
 
                     if event.ui_element == self.window.noButton:
                         print("no Button pressed!")
-                        self.question_number += 1
-                        self.update_flags(self.question_number)
-                        self.window.draw()
-                        self.draw_flags()
+                        self.answer(False)
 
                     if event.ui_element == self.window.restartButton:
                         print("restart Button pressed!")
-                        self.question_number = 1
                         self.window.draw()
                         self.draw_flags()
 
@@ -82,7 +81,7 @@ class GuessFlags(object):
                         openDocumentationFile()
 
                     if event.ui_element == self.window.rightButton:
-                        if self.page <= self.flag_manager.get_possible_pages_number():
+                        if self.page <= self.flag_manager.get_possible_page_count():
                             self.page += 1
                             print("right Button pressed!")
                             self.window.draw()
@@ -103,21 +102,28 @@ class GuessFlags(object):
 
         return False
 
+    def answer(self, answer):
+        self.clf.apply_answer(answer)
+        print(self.clf.get_current_labels())
+        if self.clf.is_in_leaf():
+            print(self.clf.get_current_labels())
+        
+        self.window.draw()
+        self.draw_flags()
+
     def draw_flags(self):
-        if self.page > self.flag_manager.get_possible_pages_number():
-            self.page=self.flag_manager.get_possible_pages_number()
-        self.window.questionLablel2.set_text(self.flag_manager.get_next_question(self.question_number))
-        flags = self.flag_manager.get_current_flags_page(self.page)
-        print(flags)
-        number = 0
-        for flag in flags:
+        country_list = self.clf.get_current_labels()
+
+        self.page = min(self.page, self.flag_manager.get_possible_page_count(country_list) - 1)
+
+        self.window.questionLablel2.set_text(self.clf.get_question())
+        flags = self.flag_manager.get_current_flags_page(country_list, self.page)
+
+        for i, flag in enumerate(flags):
             img = pygame.image.load(WORKING_DIR+"/img/flags/" + flag + ".png")
             img = pygame.transform.scale(img, SIZE_FLAG)
-            self.window.surface.blit(img, FLAG_POSITIONS[number])
-            number += 1
+            self.window.surface.blit(img, FLAG_POSITIONS[i])
 
-    def update_flags(self, number):
-        self.flag_manager.list_of_flags = self.flag_manager.list_of_flags[:round(len(self.flag_manager.list_of_flags)/2)]
-
-
-
+    # returns names of countries for which flags are included in the img folder
+    def get_supported_country_list(self):
+        return [f[:-4] for f in os.listdir('img/flags')]

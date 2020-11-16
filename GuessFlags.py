@@ -8,7 +8,7 @@ from constants import SIZE_FLAG, FLAG_POSITIONS, WORKING_DIR
 from documentationOpener import openDocumentationFile
 from classifier import Classifier
 import os
-
+from question_mapper import QuestionProvider
 
 class GuessFlags(object):
     """
@@ -36,6 +36,8 @@ class GuessFlags(object):
         self.clf = Classifier()
         self.clf.read('data/flag_data.csv', self.get_supported_country_list())
         self.clf.fit()
+
+        self.question_provider = QuestionProvider(self.clf)
 
     def run(self):
         """
@@ -81,7 +83,7 @@ class GuessFlags(object):
                         openDocumentationFile()
 
                     if event.ui_element == self.window.rightButton:
-                        if self.page <= self.flag_manager.get_possible_page_count():
+                        if self.page <= self.flag_manager.get_possible_page_count(self.clf.get_current_labels()):
                             self.page += 1
                             print("right Button pressed!")
                             self.window.draw()
@@ -103,10 +105,10 @@ class GuessFlags(object):
         return False
 
     def answer(self, answer):
-        self.clf.apply_answer(answer)
-        print(self.clf.get_current_labels())
-        if self.clf.is_in_leaf():
-            print(self.clf.get_current_labels())
+        if self.question.inverted:
+            self.clf.apply_answer(not answer)
+        else:
+            self.clf.apply_answer(answer)
         
         self.window.draw()
         self.draw_flags()
@@ -116,7 +118,9 @@ class GuessFlags(object):
 
         self.page = min(self.page, self.flag_manager.get_possible_page_count(country_list) - 1)
 
-        self.window.questionLablel2.set_text(self.clf.get_question())
+        self.question = self.question_provider.get_question()
+
+        self.window.questionLablel2.set_text(self.question.text)
         flags = self.flag_manager.get_current_flags_page(country_list, self.page)
 
         for i, flag in enumerate(flags):

@@ -1,5 +1,3 @@
-import netCDF4
-
 import pygame
 import pygame.locals
 import pygame_gui

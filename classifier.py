@@ -3,6 +3,7 @@ import pandas as pd
 import graphviz
 import csv
 import numpy as np
+import question_mapper
 
 class Classifier:
     def __init__(self):
@@ -55,7 +56,7 @@ class Classifier:
         _tree = self.clf.tree_
         feature_name = self.features.columns[_tree.feature[self.current_node]]
         threshold = _tree.threshold[self.current_node]
-        return f"Is {feature_name} <= {threshold}?"
+        return (feature_name, threshold)
 
     def apply_answer(self, is_fulfilled):
         if is_fulfilled:

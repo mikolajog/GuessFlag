@@ -29,7 +29,7 @@ class Window(object):
 
         self.descriptionButton = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(POSITION_DESCRIPTIONBUTTON, SIZE_DESCRIPTIONBUTTON),
-            text='TROLOOLOLOOO',
+            text="DOCUMENTATION",
             manager=self.manager)
 
         self.yesButton = pygame_gui.elements.UIButton(
@@ -58,8 +58,7 @@ class Window(object):
         self.titleLablel = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(POSITION_TITLELABEL, SIZE_TITLELABEL),
             text='GUESS FLAGS PROJECT',
-            manager=self.manager,
-            tool_tip_text="This is a project of guessing flag basing on up to 9 questions. Authors: M.Ogarek, K.Polarczyk, K.Rychter, Z.Śmiech")
+            manager=self.manager)
 
         self.questionLablel1 = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(POSITION_QUESTIONLABEL1, SIZE_QUESTIONLABEL1),
@@ -79,10 +78,17 @@ class Window(object):
         img = pygame.transform.scale(img, (1350, 760))
         self.surface.blit(img, (0,0))
 
+        pygame.font.init()
+        myfont = pygame.font.SysFont('Comic Sans MS', 20)
+        textsurface = myfont.render('This is a project of guessing flag by asking up to 9 questions.', False, (248, 248, 255))
+        textsurface1 = myfont.render('Authors: M.Ogarek, K.Polarczyk, K.Rychter, Z.Śmiech', False, (248, 248, 255))
+        self.surface.blit(textsurface, (0, 700))
+        self.surface.blit(textsurface1, (0, 730))
+
 
         img = pygame.image.load("img/logoagh.jpg")
         img = pygame.transform.scale(img, (100, 100))
-        self.surface.blit(img, (275, 610))
+        self.surface.blit(img, (275, 410))
 
         pygame.display.update()
 

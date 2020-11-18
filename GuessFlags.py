@@ -73,6 +73,7 @@ class GuessFlags(object):
                         self.answer(False)
 
                     if event.ui_element == self.window.restartButton:
+                        self.__init__()
                         print("restart Button pressed!")
                         self.window.draw()
                         self.draw_flags()
@@ -109,7 +110,7 @@ class GuessFlags(object):
             self.clf.apply_answer(not answer)
         else:
             self.clf.apply_answer(answer)
-        
+
         self.window.draw()
         self.draw_flags()
 

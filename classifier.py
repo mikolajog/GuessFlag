@@ -19,7 +19,7 @@ class Classifier:
                 if i != 0 and row[0] not in country_list:
                     continue
 
-                datarow = [row[0]] + row[7:]
+                datarow = [row[0]] + row[1:]
                 data.append(datarow)
 
 
@@ -66,3 +66,6 @@ class Classifier:
 
     def get_current_labels(self):
         return [label for i, label in enumerate(self.labels) if self.clf.tree_.value[self.current_node][0][i] > 0.5]
+
+def get_duplicates(df):
+    return df[df.duplicated(subset = df.columns[1:], keep=False)]

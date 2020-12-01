@@ -75,6 +75,7 @@ class GuessFlags(object):
                     if event.ui_element == self.window.restartButton:
                         self.__init__()
                         print("restart Button pressed!")
+                        self.question_provider = QuestionProvider(self.clf)
                         self.window.draw()
                         self.draw_flags()
 
@@ -106,10 +107,7 @@ class GuessFlags(object):
         return False
 
     def answer(self, answer):
-        if self.question.inverted:
-            self.clf.apply_answer(not answer)
-        else:
-            self.clf.apply_answer(answer)
+        self.question_provider.answer(self.question, answer)
 
         self.window.draw()
         self.draw_flags()

@@ -117,9 +117,16 @@ class GuessFlags(object):
 
         self.page = min(self.page, self.flag_manager.get_possible_page_count(country_list) - 1)
 
-        self.question = self.question_provider.get_question()
+        if(len(country_list)==1):
+            self.window.yesButton.disable()
+            self.window.noButton.disable()
+            self.window.questionLablel1.set_text("Thank you!")
+            text = "The winner: " + str(country_list[0])
+            self.window.questionLablel2.set_text(text)
 
-        self.window.questionLablel2.set_text(self.question.text)
+        else:
+            self.question = self.question_provider.get_question()
+            self.window.questionLablel2.set_text(self.question.text)
         flags = self.flag_manager.get_current_flags_page(country_list, self.page)
 
         for i, flag in enumerate(flags):

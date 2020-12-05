@@ -45,14 +45,10 @@ class QuestionProvider:
             if threshold <= 1:
                 return Question(f'Are there any {mapped_name} in the flag?', True)
 
-            seed = random.randrange(0, 4)
+            seed = random.randrange(0, 2)
             if seed == 0:
-                return Question(f'Is the number of {mapped_name} less than {math.ceil(threshold)}?')
-            if seed == 1:
                 return Question(f'Is the number of {mapped_name} more than {math.floor(threshold)}?', True)
-            if seed == 2:
-                return Question(f'Does it have less than {math.ceil(threshold)} {mapped_name}?')
-            if seed == 3:
+            if seed == 1:
                 return Question(f'Does it have more than {math.floor(threshold)} {mapped_name}', True)
 
         if feature in colors:

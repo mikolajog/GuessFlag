@@ -1,12 +1,12 @@
 ﻿name,bars,stripes,colours,red,green,blue,gold/yellow,white,black,orange/brown,mainhue,circles,crosses,saltires,quarters,sunstars,crescent,triangle,icon,animate,text,topleft,botright
-Afghanistan,0,3,4,1,1,0,0,1,1,0,none,0,0,0,0,0,0,0,1,0,1,black,green
+Afghanistan,3,0,4,1,1,0,0,1,1,0,none,0,0,0,0,0,0,0,1,0,1,black,green
 Albania,0,0,2,1,0,0,0,0,1,0,red,0,0,0,0,0,0,0,0,1,0,red,red
 Algeria,2,0,3,1,1,0,0,1,0,0,none,0,0,0,0,1,1,0,0,0,0,green,white
 Andorra,3,0,3,1,0,1,1,0,0,0,none,0,0,0,0,0,0,0,1,1,0,blue,red
 Angola,0,2,3,1,0,0,1,0,1,0,none,0,0,0,0,1,0,0,1,0,0,red,black
 Antigua-Barbuda,0,1,5,1,0,1,1,1,1,0,red,0,0,0,0,1,0,1,0,0,0,black,red
 Argentina,0,3,3,0,0,1,1,1,0,0,blue,0,0,0,0,1,0,0,0,0,0,blue,blue
-Armenia,3,0,3,1,0,1,0,0,0,1,none,0,0,0,0,0,0,0,0,0,0,red,orange
+Armenia,0,3,3,1,0,1,0,0,0,1,none,0,0,0,0,0,0,0,0,0,0,red,orange
 Australia,0,0,3,1,0,1,0,1,0,0,blue,0,1,1,1,6,0,0,0,0,0,white,blue
 Austria,0,3,2,1,0,0,0,1,0,0,red,0,0,0,0,0,0,0,0,0,0,red,red
 Azerbaijan,0,3,4,1,1,1,0,1,0,0,none,0,0,0,0,1,1,0,0,0,0,blue,green
@@ -29,7 +29,7 @@ Burkina Faso,0,2,3,1,1,0,1,0,0,0,none,0,0,0,0,1,0,0,0,0,0,red,green
 Burundi,0,0,3,1,1,0,0,1,0,0,red,1,0,1,0,3,0,1,0,0,0,white,white
 Cambodia,0,3,4,1,0,1,0,1,1,0,none,0,0,0,0,0,0,0,1,0,0,blue,blue
 Cameroon,3,0,3,1,1,0,1,0,0,0,gold,0,0,0,0,1,0,0,0,0,0,green,gold
-Canada,2,0,2,1,0,0,0,1,0,0,red,0,0,0,0,0,0,0,1,0,0,red,red
+Canada,3,0,2,1,0,0,0,1,0,0,red,0,0,0,0,0,0,0,1,0,0,red,red
 Cape-Verde-Islands,0,5,4,1,0,1,1,1,0,0,blue,0,0,0,0,10,0,0,0,0,0,blue,blue
 Central-African-Republic,1,4,5,1,1,1,1,1,0,0,none,0,0,0,0,1,0,0,0,0,0,blue,gold
 Chile,0,2,3,1,0,1,0,1,0,0,red,0,0,0,1,1,0,0,0,0,0,blue,red
@@ -43,7 +43,7 @@ Cuba,0,5,3,1,0,1,0,1,0,0,blue,0,0,0,0,1,0,1,0,0,0,blue,blue
 Cyprus,0,0,3,0,1,0,1,1,0,0,white,0,0,0,0,0,0,0,1,0,1,white,white
 Czech Republic,0,2,3,1,0,1,0,1,0,0,none,0,0,0,0,0,0,1,0,0,0,white,red
 Denmark,0,0,2,1,0,0,0,1,0,0,red,0,1,0,0,0,0,0,0,0,0,red,red
-Djibouti,0,0,4,1,1,1,0,1,0,0,none,0,0,0,0,1,0,1,0,0,0,blue,green
+Djibouti,0,2,4,1,1,1,0,1,0,0,none,0,0,0,0,1,0,1,0,0,0,blue,green
 Dominica,0,0,6,1,1,1,1,1,1,0,green,1,1,0,0,10,0,0,0,1,0,green,green
 Dominican-Republic,0,0,4,1,1,1,0,1,0,0,none,0,1,0,0,0,0,0,1,0,1,blue,blue
 DR Congo,0,0,3,1,0,1,1,0,0,0,blue,0,0,0,0,1,0,0,0,0,0,blue,blue
@@ -93,7 +93,7 @@ Kuwait,0,3,4,1,1,0,0,1,1,0,none,0,0,0,0,0,0,0,0,0,0,green,red
 Kyrgyzstan,0,0,2,1,0,0,1,0,0,0,red,0,0,0,0,1,0,0,1,0,0,red,red
 Laos,0,3,3,1,0,1,0,1,0,0,none,1,0,0,0,0,0,0,0,0,0,red,red
 Latvia,0,3,2,1,0,0,0,1,0,0,red,0,0,0,0,0,0,0,0,0,0,red,red
-Lebanon,0,2,3,1,1,0,0,1,0,0,none,0,0,0,0,0,0,0,1,0,0,red,red
+Lebanon,0,3,3,1,1,0,0,1,0,0,none,0,0,0,0,0,0,0,1,0,0,red,red
 Lesotho,0,3,4,0,1,1,0,1,1,0,none,0,0,0,0,0,0,0,1,0,0,blue,green
 Liberia,0,11,3,1,0,1,0,1,0,0,red,0,0,0,1,1,0,0,0,0,0,blue,red
 Libya,0,3,4,1,1,0,0,1,1,0,black,0,0,0,0,1,1,0,0,0,0,red,green

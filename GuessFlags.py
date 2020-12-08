@@ -66,7 +66,6 @@ class GuessFlags(object):
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.window.yesButton:
                         print("yes Button pressed!")
-                        self.page=0
                         self.answer(True)
 
                     if event.ui_element == self.window.noButton:

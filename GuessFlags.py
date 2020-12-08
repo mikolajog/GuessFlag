@@ -67,10 +67,16 @@ class GuessFlags(object):
                     if event.ui_element == self.window.yesButton:
                         print("yes Button pressed!")
                         self.answer(True)
+                        self.page = 0
+                        self.window.draw()
+                        self.draw_flags()
 
                     if event.ui_element == self.window.noButton:
                         print("no Button pressed!")
                         self.answer(False)
+                        self.page=0
+                        self.window.draw()
+                        self.draw_flags()
 
                     if event.ui_element == self.window.restartButton:
                         self.__init__()
@@ -85,7 +91,7 @@ class GuessFlags(object):
                         openDocumentationFile()
 
                     if event.ui_element == self.window.rightButton:
-                        if self.page < self.flag_manager.get_possible_page_count(self.clf.get_current_labels()):
+                        if self.page <= self.flag_manager.get_possible_page_count(self.clf.get_current_labels()):
                             self.page += 1
                             print("right Button pressed!")
                             self.window.draw()

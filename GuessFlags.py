@@ -66,6 +66,7 @@ class GuessFlags(object):
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.window.yesButton:
                         print("yes Button pressed!")
+                        self.page=0
                         self.answer(True)
 
                     if event.ui_element == self.window.noButton:
@@ -85,14 +86,14 @@ class GuessFlags(object):
                         openDocumentationFile()
 
                     if event.ui_element == self.window.rightButton:
-                        if self.page <= self.flag_manager.get_possible_page_count(self.clf.get_current_labels()):
+                        if self.page < self.flag_manager.get_possible_page_count(self.clf.get_current_labels()):
                             self.page += 1
                             print("right Button pressed!")
                             self.window.draw()
                             self.draw_flags()
 
                     if event.ui_element == self.window.leftButton:
-                        if self.page>1:
+                        if self.page>=1:
                             self.page -= 1
                             print("left Button pressed!")
                             self.window.draw()

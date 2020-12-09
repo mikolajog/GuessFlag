@@ -66,17 +66,13 @@ class GuessFlags(object):
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.window.yesButton:
                         print("yes Button pressed!")
-                        self.answer(True)
                         self.page = 0
-                        self.window.draw()
-                        self.draw_flags()
+                        self.answer(True)
 
                     if event.ui_element == self.window.noButton:
                         print("no Button pressed!")
-                        self.answer(False)
                         self.page=0
-                        self.window.draw()
-                        self.draw_flags()
+                        self.answer(False)
 
                     if event.ui_element == self.window.restartButton:
                         self.__init__()
@@ -119,7 +115,11 @@ class GuessFlags(object):
         self.draw_flags()
 
     def draw_flags(self):
+        self.question = self.question_provider.get_question()
+        self.window.questionLablel2.set_text(self.question.text)
+
         country_list = self.clf.get_current_labels()
+        print(country_list)
 
         self.page = min(self.page, self.flag_manager.get_possible_page_count(country_list) - 1)
 
@@ -130,9 +130,6 @@ class GuessFlags(object):
             text = "The winner: " + str(country_list[0])
             self.window.questionLablel2.set_text(text)
 
-        else:
-            self.question = self.question_provider.get_question()
-            self.window.questionLablel2.set_text(self.question.text)
         flags = self.flag_manager.get_current_flags_page(country_list, self.page)
 
         for i, flag in enumerate(flags):

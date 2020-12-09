@@ -32,6 +32,7 @@ Cameroon,3,0,3,1,1,0,1,0,0,0,gold,0,0,0,0,1,0,0,0,0,0,green,gold
 Canada,3,0,2,1,0,0,0,1,0,0,red,0,0,0,0,0,0,0,1,0,0,red,red
 Cape-Verde-Islands,0,5,4,1,0,1,1,1,0,0,blue,0,0,0,0,10,0,0,0,0,0,blue,blue
 Central-African-Republic,1,4,5,1,1,1,1,1,0,0,none,0,0,0,0,1,0,0,0,0,0,blue,gold
+Chad,3,0,3,1,0,1,1,0,0,0,none,0,0,0,0,0,0,0,0,0,0,blue,red
 Chile,0,2,3,1,0,1,0,1,0,0,red,0,0,0,1,1,0,0,0,0,0,blue,red
 China,0,0,2,1,0,0,1,0,0,0,red,0,0,0,0,5,0,0,0,0,0,red,red
 Colombia,0,3,3,1,0,1,1,0,0,0,gold,0,0,0,0,0,0,0,0,0,0,gold,red
@@ -118,6 +119,7 @@ Morocco,0,0,2,1,1,0,0,0,0,0,red,0,0,0,0,1,0,0,0,0,0,red,red
 Mozambique,0,5,5,1,1,0,1,1,1,0,none,0,0,0,0,1,0,1,1,0,0,green,gold
 Myanmar,0,3,4,1,1,0,1,1,0,0,none,0,0,0,0,1,0,0,0,0,0,gold,red
 Namibia,0,0,5,1,1,1,1,1,0,0,none,1,0,0,0,1,0,0,0,0,0,blue,green
+Nauru,0,3,3,0,0,1,1,1,0,0,blue,0,0,0,0,1,0,0,0,0,0,blue,blue
 Nepal,0,0,3,1,0,1,0,1,0,0,red,0,0,0,0,2,1,0,0,0,0,blue,blue
 Netherlands,0,3,3,1,0,1,0,1,0,0,none,0,0,0,0,0,0,0,0,0,0,red,blue
 New-Zealand,0,0,3,1,0,1,0,1,0,0,blue,0,1,1,1,4,0,0,0,0,0,white,blue

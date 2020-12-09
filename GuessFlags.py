@@ -119,7 +119,6 @@ class GuessFlags(object):
         self.window.questionLablel2.set_text(self.question.text)
 
         country_list = self.clf.get_current_labels()
-        print(country_list)
 
         self.page = min(self.page, self.flag_manager.get_possible_page_count(country_list) - 1)
 

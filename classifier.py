@@ -26,16 +26,15 @@ class Classifier:
         df = pd.DataFrame(data[1:], columns=data[0])
         df.replace('', np.nan, inplace=True)
         df.dropna(inplace=True)
-        df = df.drop_duplicates(subset = df.columns[1:])
         self.labels = df['name']
-        df = df.drop(['name'], axis=1)
-        df_str = df[['mainhue', 'topleft', 'botright']]
+        columns_to_encode = ['mainhue', 'topleft', 'botright', 'name']
+        df_str = df[columns_to_encode]
         df_str = df_str.apply(lambda x: x.str.strip())
 
         #this will treat colors in different columns separatly, but it's not a problem
         onehot = pd.get_dummies(df_str, drop_first=True)
 
-        df = df.drop(['mainhue', 'topleft', 'botright'], axis=1)
+        df = df.drop(columns_to_encode, axis=1)
         df = df.apply(pd.to_numeric)
         self.features = df.join(onehot)
 

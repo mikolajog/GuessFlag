@@ -82,6 +82,10 @@ class QuestionProvider:
             
             return Question(f'Does the flag have a leading color?')
 
+        if 'name_' in feature:
+            name = feature[len('name_'):]
+            return Question(f'Are you thinking of {name}?', True)
+
         raise ValueError(f'Question mapping not found for feature {feature} and threshold {threshold}')
 
     def answer(self, question, is_fulfilled):

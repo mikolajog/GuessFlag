@@ -29,14 +29,7 @@ class QuestionProvider:
         self.clf = classifier
         self.colors = self.clf.features
 
-        self.delayed_question_mainhue_color = None
-        self.was_mainhue_none_asked = False
-        self.has_mainhue = None
-
     def get_question(self):
-        if self.delayed_question_mainhue_color != None:
-            return self.get_mainhue_question(self.delayed_question_mainhue_color)
-
         return self.map_question(*self.clf.get_question())
 
     def map_question(self, feature, threshold):
@@ -65,22 +58,9 @@ class QuestionProvider:
         if 'mainhue_' in feature:
             color = feature[len('mainhue_'):]
             if color != "none":
-                if self.was_mainhue_none_asked:
-                    if self.has_mainhue:
-                        return self.get_mainhue_question(color)
-
-                    self.clf.apply_answer(True)
-                    return self.map_question(*self.clf.get_question())
-
-                delayed_question_mainhue_color = color
-                self.was_mainhue_none_asked = True
+                return self.get_mainhue_question(color)
             else:
-                if self.was_mainhue_none_asked:
-                    self.clf.apply_answer(not self.has_mainhue)
-                    return self.map_question(*self.clf.get_question())
-                self.was_mainhue_none_asked = True
-            
-            return Question(f'Does the flag have a leading color?')
+                return Question(f'Does the flag have a leading color?')
 
         if 'name_' in feature:
             name = feature[len('name_'):]
@@ -89,22 +69,12 @@ class QuestionProvider:
         raise ValueError(f'Question mapping not found for feature {feature} and threshold {threshold}')
 
     def answer(self, question, is_fulfilled):
-        if self.was_mainhue_none_asked and self.has_mainhue == None:
-            self.has_mainhue = is_fulfilled
-
         real_answer = is_fulfilled
 
         if question.inverted:
             real_answer = not real_answer
 
-        if self.delayed_question_mainhue_color == None:
-            self.clf.apply_answer(real_answer)
-            return
-
-        if not real_answer: #no leading color
-            self.clf.apply_answer(False)
-        
-        # if leading color exists skip this answer to allow for the specific color question
+        self.clf.apply_answer(real_answer)
 
 
     def get_mainhue_question(self, color):
